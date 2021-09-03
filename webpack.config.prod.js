@@ -11,11 +11,11 @@ module.exports = {
     ...base.plugins,
     new MiniCssExtractPlugin({
       filename: mode === 'production' ? '[name].[chunkhash].css' : '[name].[hash].css',
-      chunkFilename: mode === 'production' ? '[id].[chunkhash].css' : '[id].[hash].css',
-      ignoreOrder: false
+      chunkFilename: mode === 'production' ? '[id].[chunkhash].css' : '[id].[hash].css'
     }) ],
   module: {
     rules: [
+      ...base.module.rules,
       {
         test: /\.css$/i,
         use: [
