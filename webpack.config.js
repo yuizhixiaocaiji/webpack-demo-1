@@ -1,21 +1,17 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const { mode } = require('./webpack.config');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const base = require('./webpack.config.base.js')
 
 module.exports = {
-  mode: 'development',
-  entry: './src/index.js',
+  ...base,
   devtool: 'inline-source-map',
   devServer: {
     static: './dist'
   },
-  output: {
-    filename: mode === 'production' ? '[name].[chunkhash].js' : '[name].[hash].js'
-  },
-  plugins: [ new HtmlWebpackPlugin({
-    title: 'XMDL - 写代码啦',
-    template: 'src/assets/index.html'
-  }) ],
+  mode: 'development',
   module: {
     rules: [
       {
